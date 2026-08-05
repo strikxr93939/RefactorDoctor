@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "refactor-doctor"
+version = "0.1.0"
+description = "Безопасный помощник по модернизации legacy Python-кода"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "black>=25.1,<27",
+  "fastapi>=0.115,<1",
+  "httpx>=0.28,<1",
+  "langchain-ollama>=0.3,<1",
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "pylint>=3.3,<5",
+  "python-multipart>=0.0.18,<1",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9", "pytest-cov>=6,<8", "ruff>=0.11,<1"]
+
+[project.scripts]
+refactor-doctor = "refactor_doctor.cli:main"
+refactor-doctor-web = "refactor_doctor.api:run"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/refactor_doctor"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

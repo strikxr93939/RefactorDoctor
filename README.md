@@ -77,3 +77,8 @@ Get-Content .\legacy.py -Raw | refactor-doctor - --output .\modern.py
 ```powershell
 pytest
 ```
+
+## Статус проекта
+
+Обновлённый интерфейс, детерминированный анализ и необязательные подсказки Ollama
+проверены на тестовых фрагментах legacy-кода.
